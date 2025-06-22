@@ -5,6 +5,7 @@ from .serializer import ProductSerializer
 
 class ProductListView(APIView):
     def get(self, request):
+        print("Inside product list ")
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
