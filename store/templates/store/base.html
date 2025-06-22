@@ -42,8 +42,8 @@
             <a class="nav-link" href="{% url 'create-product' %}">Add Product</a>
         </li>
         {% endif %}
-        <li class="nav-item"><a class="nav-link" href="/cart/">Cart</a></li>
         {% if user.is_authenticated %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Cart</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'my-orders' %}">Orders</a></li>
         {% else %}
         {% endif %}

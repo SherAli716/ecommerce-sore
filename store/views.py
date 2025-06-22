@@ -12,6 +12,7 @@ from django.shortcuts import render, get_object_or_404,redirect
 from .models import Product,CartItem,Order, OrderItem
 from .forms import ProductForm
 
+@staff_member_required
 def create_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -46,7 +47,7 @@ def custom_logout_view(request):
     logout(request)
     return redirect('login')
 
-@staff_member_required
+@login_required
 def add_to_cart(request, pk):
     product = get_object_or_404(Product, pk=pk)
     cart_item, created = CartItem.objects.get_or_create(user=request.user, product=product)
